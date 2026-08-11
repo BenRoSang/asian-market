@@ -1,0 +1,40 @@
+
+function Header() {
+  return (
+    <header className="bg-white shadow-sm">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-6">
+          <h1 className="text-2xl font-bold text-gray-900">
+            My Small Shop
+          </h1>
+
+          <p className="mt-1 text-gray-600">
+            Fresh products delivered to your door
+          </p>
+
+          <button className="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700">
+          Cart
+        </button>
+
+        <nav className="mt-5 flex gap-6 border-t border-gray-200 pt-4">
+          <a href="#" className="font-medium text-blue-600">
+            Home
+          </a>
+
+          <a href="#products" className="text-gray-600 hover:text-blue-600">
+            Products
+          </a>
+
+          <a href="#about" className="text-gray-600 hover:text-blue-600">
+            About Us
+          </a>
+
+          <a href="#contact" className="text-gray-600 hover:text-blue-600">
+            Contact
+          </a>
+        </nav>
+        </div>
+    </header>
+  )
+}
+
+export default Header
