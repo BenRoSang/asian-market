@@ -6,6 +6,8 @@ import CategoryFilter from "./component/CategoryFilter";
 import ProductDetails from "./component/ProductDetail";
 import Cart from "./component/Cart";
 import CheckoutForm from "./component/CheckoutForm";
+import About from "./component/About";
+import Contact from "./component/Contact";
 
 function App() {
   // State to manage the selected category for filtering
@@ -95,6 +97,9 @@ function App() {
           <ProductDetails product={selectedProduct} onClose={() => setSelectedProduct(null)} />
         )}
       </section>
+
+      <About />
+      <Contact />
     </main>
   );
 }

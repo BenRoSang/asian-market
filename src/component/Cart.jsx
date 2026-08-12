@@ -16,9 +16,13 @@ function Cart({ cart, onRemoveFromCart, onIncrease, onDecrease }) {
   
         <div className="mt-5 space-y-3">
           {cart.map((product, index) => (
+            // <div
+            //   key={`${product.id}-${index}`}
+            //   className="flex items-center justify-between rounded-lg bg-white p-4 shadow-sm"
+            // >
             <div
-              key={`${product.id}-${index}`}
-              className="flex items-center justify-between rounded-lg bg-white p-4 shadow-sm"
+                key={product.id}
+                className="flex flex-col gap-4 rounded-lg bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between"
             >
               <div>
                 <h3 className="font-semibold text-gray-900">{product.name}</h3>
