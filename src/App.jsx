@@ -4,6 +4,7 @@ import products from "./data/product";
 import ProductCard from "./component/ProductCard";
 import CategoryFilter from "./component/CategoryFilter";
 import ProductDetails from "./component/ProductDetail";
+import Cart from "./component/Cart";
 
 function App() {
   // State to manage the selected category for filtering
@@ -27,11 +28,39 @@ function App() {
   const [cart, setCart] = useState([]);
   const handleAddToCart = (product) => {
     console.log("Add to cart:", product);
-    setCart((prevCart) => [...prevCart, product]);
+    const existingProduct = cart.find((item) => item.id === product.id);
+    if(existingProduct) {
+      setCart((prevCart) => prevCart.map((item) =>
+        item.id === product.id ? {...item, quantity: item.quantity + 1} : item
+      ));
+    }else {
+      setCart((prevCart) => [...prevCart, {...product, quantity: 1}]);
+    }
   };
-  console.log("Cart:", cart.length);
+
+  function handleRemoveFromCart(productIndex) {
+    setCart((prevCart) => prevCart.filter((item, index) => index !== productIndex))
+    console.log("Remove from cart:", productIndex);
+  }
+
+  function handleIncreaseQuantity(productId) {
+    setCart((prevCart) => prevCart.map((item) => item.id === productId ? 
+    {...item, quantity: item.quantity + 1 } : item))
+  }
+
+  function handleDecreaseQuantity(productId) {
+    setCart((prevCart) => prevCart.map((item) => {
+      if(item.id === productId) {
+        const newQuantity = item.quantity - 1;
+        return {...item, quantity: newQuantity};
+      }
+      return item;
+    }).filter((item) => item.quantity > 0) // Remove item if quantity is 0
+  )}
+  console.log("Cart items:", cart);
+
   return (
-    <main className="min-h-screen bg-gray-100">
+    <main className="min-h-screen bg-gra-100">
       <Header cartCount={cart.length} />
 
       <section id="products" className="mx-auto max-w-7xl px-4 py-12">
@@ -55,6 +84,12 @@ function App() {
             />
           ))}
         </div>
+
+        <Cart cart={cart} 
+          onRemoveFromCart={handleRemoveFromCart}
+          onIncrease={handleIncreaseQuantity}
+          onDecrease={handleDecreaseQuantity}
+        />
 
         {/* Add the ProductDetails component here if you want to show product details in a modal */}
         {selectedProduct && (
