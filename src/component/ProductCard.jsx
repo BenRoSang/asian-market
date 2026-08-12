@@ -1,4 +1,4 @@
-function ProductCard({ product }) {
+function ProductCard({ product, onViewDetails, onAddToCart }) {
     return (
       <article className="overflow-hidden rounded-xl bg-white shadow-sm">
         <img
@@ -28,9 +28,18 @@ function ProductCard({ product }) {
               </span>
             </p>
   
-            <button className="rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700">
-              Add
-            </button>
+            <div>
+              <button 
+                onClick={() => onAddToCart(product)}
+                className="rounded-lg bg-blue-600 mx-1 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700">
+                Add
+              </button>
+              <button
+              onClick={() => onViewDetails(product)}
+              className="rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700">
+              Details
+              </button>
+            </div>
           </div>
         </div>
       </article>

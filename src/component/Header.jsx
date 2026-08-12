@@ -1,5 +1,5 @@
 
-function Header() {
+function Header({ cartCount }) {
   return (
     <header className="bg-white shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-6">
@@ -12,7 +12,7 @@ function Header() {
           </p>
 
           <button className="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700">
-          Cart
+          Cart ({cartCount})
         </button>
 
         <nav className="mt-5 flex gap-6 border-t border-gray-200 pt-4">
