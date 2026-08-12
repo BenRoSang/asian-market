@@ -5,6 +5,7 @@ import ProductCard from "./component/ProductCard";
 import CategoryFilter from "./component/CategoryFilter";
 import ProductDetails from "./component/ProductDetail";
 import Cart from "./component/Cart";
+import CheckoutForm from "./component/CheckoutForm";
 
 function App() {
   // State to manage the selected category for filtering
@@ -20,14 +21,12 @@ function App() {
   
   const onViewDetails = (product) => {
     // Implement the logic to view product details here
-    console.log("View details for:", product);
     setSelectedProduct(product);
   }
 
   // State to manage adding products to the cart
   const [cart, setCart] = useState([]);
   const handleAddToCart = (product) => {
-    console.log("Add to cart:", product);
     const existingProduct = cart.find((item) => item.id === product.id);
     if(existingProduct) {
       setCart((prevCart) => prevCart.map((item) =>
@@ -40,7 +39,6 @@ function App() {
 
   function handleRemoveFromCart(productIndex) {
     setCart((prevCart) => prevCart.filter((item, index) => index !== productIndex))
-    console.log("Remove from cart:", productIndex);
   }
 
   function handleIncreaseQuantity(productId) {
@@ -57,7 +55,6 @@ function App() {
       return item;
     }).filter((item) => item.quantity > 0) // Remove item if quantity is 0
   )}
-  console.log("Cart items:", cart);
 
   return (
     <main className="min-h-screen bg-gra-100">
@@ -90,6 +87,8 @@ function App() {
           onIncrease={handleIncreaseQuantity}
           onDecrease={handleDecreaseQuantity}
         />
+
+        {cart.length > 0 && <CheckoutForm cart={cart} />}
 
         {/* Add the ProductDetails component here if you want to show product details in a modal */}
         {selectedProduct && (

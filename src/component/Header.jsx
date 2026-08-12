@@ -11,9 +11,9 @@ function Header({ cartCount }) {
             Fresh products delivered to your door
           </p>
 
-          <button className="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700">
+          <a href="#cart" className="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700">
           Cart ({cartCount})
-        </button>
+        </a>
 
         <nav className="mt-5 flex gap-6 border-t border-gray-200 pt-4">
           <a href="#" className="font-medium text-blue-600">
